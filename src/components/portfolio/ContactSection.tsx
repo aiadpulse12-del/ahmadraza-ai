@@ -81,7 +81,7 @@ const ContactSection = () => {
             className="flex flex-col gap-4"
           >
             <a
-              href="https://wa.me/923000000000"
+              href="https://wa.me/923086430210?text=Hi%20AI%20Adpulse%2C%20I%20want%20to%20learn%20about%20your%20AI%20automation%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primary/30 transition-colors group"
@@ -95,21 +95,7 @@ const ContactSection = () => {
               </div>
             </a>
             <a
-              href="https://linkedin.com/in/ahmadraza"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primary/30 transition-colors group"
-            >
-              <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                <Linkedin className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="font-medium text-sm">LinkedIn</p>
-                <p className="text-muted-foreground text-xs">Connect with me</p>
-              </div>
-            </a>
-            <a
-              href="mailto:contact@ahmadraza.dev"
+              href="mailto:aiadpulse12@gmail.com"
               className="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primary/30 transition-colors group"
             >
               <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
