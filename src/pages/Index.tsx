@@ -10,7 +10,9 @@ import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
 
 const Index = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-background relative">
+    <div className="starfield" />
+    <div className="cosmic-glow" />
     <Navbar />
     <HeroSection />
     <AboutSection />

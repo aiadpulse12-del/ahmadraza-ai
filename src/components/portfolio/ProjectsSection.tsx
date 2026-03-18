@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
-import { MessageSquare, Target, ExternalLink } from "lucide-react";
+import { MessageSquare, Target, Brain, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -17,13 +17,20 @@ const projects = [
       "Automated Google Maps scraping + AI personalized email outreach system for client acquisition.",
     tags: ["Google Maps", "Email Outreach", "AI", "Automation"],
   },
+  {
+    icon: Brain,
+    title: "RAG-Based Appointment Booking Agent",
+    description:
+      "Intelligent system using Retrieval-Augmented Generation to automate scheduling with context-aware responses and real-time data retrieval.",
+    tags: ["RAG", "AI Agent", "LLM", "Automation"],
+  },
 ];
 
 const ProjectsSection = () => (
   <section id="projects" className="section-padding relative">
     <div className="container mx-auto">
       <SectionHeading label="Work" title="Featured Projects" />
-      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {projects.map((project, i) => (
           <motion.div
             key={project.title}

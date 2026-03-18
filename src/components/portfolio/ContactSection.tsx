@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { useState } from "react";
-import { MessageCircle, Linkedin, Mail, Send } from "lucide-react";
+import { MessageCircle, Mail, Send } from "lucide-react";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:contact@ahmadraza.dev?subject=Inquiry from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.email}`;
+    const mailto = `mailto:aiadpulse12@gmail.com?subject=Inquiry from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.email}`;
     window.open(mailto, "_blank");
   };
 
@@ -81,7 +81,7 @@ const ContactSection = () => {
             className="flex flex-col gap-4"
           >
             <a
-              href="https://wa.me/923000000000"
+              href="https://wa.me/923086430210?text=Hi%20AI%20Adpulse%2C%20I%20want%20to%20learn%20about%20your%20AI%20automation%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primary/30 transition-colors group"
@@ -95,21 +95,7 @@ const ContactSection = () => {
               </div>
             </a>
             <a
-              href="https://linkedin.com/in/ahmadraza"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primary/30 transition-colors group"
-            >
-              <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                <Linkedin className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="font-medium text-sm">LinkedIn</p>
-                <p className="text-muted-foreground text-xs">Connect with me</p>
-              </div>
-            </a>
-            <a
-              href="mailto:contact@ahmadraza.dev"
+              href="mailto:aiadpulse12@gmail.com"
               className="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primary/30 transition-colors group"
             >
               <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
@@ -117,7 +103,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="font-medium text-sm">Email</p>
-                <p className="text-muted-foreground text-xs">contact@ahmadraza.dev</p>
+                <p className="text-muted-foreground text-xs">aiadpulse12@gmail.com</p>
               </div>
             </a>
           </motion.div>
