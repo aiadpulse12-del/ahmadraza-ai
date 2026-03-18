@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { useState } from "react";
-import { MessageCircle, Linkedin, Mail, Send } from "lucide-react";
+import { MessageCircle, Mail, Send } from "lucide-react";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
