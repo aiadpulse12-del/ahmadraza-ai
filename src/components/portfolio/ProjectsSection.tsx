@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
-import { MessageSquare, Target, ExternalLink } from "lucide-react";
+import { MessageSquare, Target, Brain, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -16,6 +16,13 @@ const projects = [
     description:
       "Automated Google Maps scraping + AI personalized email outreach system for client acquisition.",
     tags: ["Google Maps", "Email Outreach", "AI", "Automation"],
+  },
+  {
+    icon: Brain,
+    title: "RAG-Based Appointment Booking Agent",
+    description:
+      "Intelligent system using Retrieval-Augmented Generation to automate scheduling with context-aware responses and real-time data retrieval.",
+    tags: ["RAG", "AI Agent", "LLM", "Automation"],
   },
 ];
 
