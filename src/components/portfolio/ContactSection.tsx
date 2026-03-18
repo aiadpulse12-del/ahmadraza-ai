@@ -1,15 +1,37 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { useState } from "react";
-import { MessageCircle, Mail, Send } from "lucide-react";
+import { MessageCircle, Mail, Send, CheckCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+const SERVICE_ID = "service_678nve4";
+const TEMPLATE_ID = "template_ug2ldkw";
+const PUBLIC_KEY = "Gjv_lRs323hU-N3MF";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:aiadpulse12@gmail.com?subject=Inquiry from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.email}`;
-    window.open(mailto, "_blank");
+    setSending(true);
+    setError("");
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+      }, PUBLIC_KEY);
+      setSent(true);
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setSent(false), 4000);
+    } catch {
+      setError("Failed to send. Please try again or use WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -21,7 +43,6 @@ const ContactSection = () => {
           description="Have a project in mind or want to collaborate? I'd love to hear from you."
         />
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Form */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 30 }}
@@ -63,16 +84,22 @@ const ContactSection = () => {
                 placeholder="Tell me about your project..."
               />
             </div>
+            {error && <p className="text-destructive text-sm">{error}</p>}
+            {sent && (
+              <p className="text-primary text-sm flex items-center gap-1.5">
+                <CheckCircle className="w-4 h-4" /> Message sent successfully!
+              </p>
+            )}
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+              disabled={sending}
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              Send Message
+              {sending ? "Sending..." : "Send Message"}
             </button>
           </motion.form>
 
-          {/* Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
