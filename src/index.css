@@ -6,47 +6,52 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 210 20% 92%;
+    --background: 230 25% 3%;
+    --foreground: 220 20% 92%;
 
-    --card: 220 18% 8%;
-    --card-foreground: 210 20% 92%;
+    --card: 230 22% 7%;
+    --card-foreground: 220 20% 92%;
 
-    --popover: 220 18% 8%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 230 22% 7%;
+    --popover-foreground: 220 20% 92%;
 
-    --primary: 160 100% 50%;
-    --primary-foreground: 220 20% 4%;
+    --primary: 250 90% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 16% 14%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 230 20% 12%;
+    --secondary-foreground: 220 20% 85%;
 
-    --muted: 220 14% 12%;
-    --muted-foreground: 215 12% 55%;
+    --muted: 230 18% 10%;
+    --muted-foreground: 225 12% 55%;
 
-    --accent: 160 80% 45%;
-    --accent-foreground: 220 20% 4%;
+    --accent: 200 100% 60%;
+    --accent-foreground: 230 25% 3%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 14% 16%;
-    --input: 220 14% 16%;
-    --ring: 160 100% 50%;
+    --border: 230 16% 14%;
+    --input: 230 16% 14%;
+    --ring: 250 90% 65%;
 
     --radius: 0.75rem;
 
-    --glow-primary: 0 0 40px hsl(160 100% 50% / 0.15);
-    --glow-accent: 0 0 60px hsl(160 80% 45% / 0.1);
+    --neon-violet: 270 90% 65%;
+    --neon-blue: 220 100% 60%;
+    --neon-cyan: 190 100% 55%;
 
-    --sidebar-background: 220 18% 6%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 160 100% 50%;
-    --sidebar-primary-foreground: 220 20% 4%;
-    --sidebar-accent: 220 14% 12%;
-    --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 220 14% 16%;
-    --sidebar-ring: 160 100% 50%;
+    --glow-primary: 0 0 40px hsl(250 90% 65% / 0.2);
+    --glow-accent: 0 0 60px hsl(200 100% 60% / 0.15);
+    --glow-violet: 0 0 50px hsl(270 90% 65% / 0.15);
+
+    --sidebar-background: 230 22% 5%;
+    --sidebar-foreground: 220 20% 92%;
+    --sidebar-primary: 250 90% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 18% 10%;
+    --sidebar-accent-foreground: 220 20% 92%;
+    --sidebar-border: 230 16% 14%;
+    --sidebar-ring: 250 90% 65%;
   }
 }
 
@@ -70,15 +75,40 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--neon-violet)));
   }
 
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+    @apply backdrop-blur-xl border border-border/40;
+    background: linear-gradient(135deg, hsl(var(--card) / 0.7), hsl(var(--card) / 0.4));
+  }
+
+  .glass-input {
+    @apply backdrop-blur-xl border border-border/50;
+    background: hsl(var(--card) / 0.5);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .glass-input:focus {
+    border-color: hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.15), inset 0 0 20px hsl(var(--primary) / 0.05);
   }
 
   .glow-border {
     box-shadow: var(--glow-primary);
+  }
+
+  .glow-button {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3), 0 0 60px hsl(var(--primary) / 0.1);
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+
+  .glow-button:hover {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.5), 0 0 80px hsl(var(--primary) / 0.2);
+    transform: translateY(-2px);
   }
 
   .section-padding {
@@ -87,11 +117,36 @@
 
   .grid-bg {
     background-image: 
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(hsl(var(--border) / 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.2) 1px, transparent 1px);
+    background-size: 80px 80px;
   }
 
+  /* Floating orbs */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .orb-violet {
+    background: hsl(var(--neon-violet) / 0.15);
+  }
+
+  .orb-blue {
+    background: hsl(var(--neon-blue) / 0.12);
+  }
+
+  .orb-cyan {
+    background: hsl(var(--neon-cyan) / 0.1);
+  }
+
+  .orb-primary {
+    background: hsl(var(--primary) / 0.12);
+  }
+
+  /* Starfield */
   .starfield {
     position: fixed;
     top: 0;
@@ -112,32 +167,32 @@
     width: 100%;
     height: 100%;
     background-image: 
-      radial-gradient(1px 1px at 10% 15%, hsl(var(--primary) / 0.4) 50%, transparent 100%),
-      radial-gradient(1px 1px at 25% 35%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 40% 70%, hsl(var(--primary) / 0.5) 50%, transparent 100%),
-      radial-gradient(1px 1px at 55% 20%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
-      radial-gradient(1px 1px at 70% 60%, hsl(var(--primary) / 0.4) 50%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 85% 40%, hsl(var(--primary) / 0.5) 50%, transparent 100%),
-      radial-gradient(1px 1px at 15% 80%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
+      radial-gradient(1px 1px at 10% 15%, hsl(var(--primary) / 0.5) 50%, transparent 100%),
+      radial-gradient(1px 1px at 25% 35%, hsl(var(--neon-cyan) / 0.4) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 70%, hsl(var(--neon-violet) / 0.5) 50%, transparent 100%),
+      radial-gradient(1px 1px at 55% 20%, hsl(var(--accent) / 0.4) 50%, transparent 100%),
+      radial-gradient(1px 1px at 70% 60%, hsl(var(--primary) / 0.5) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 85% 40%, hsl(var(--neon-cyan) / 0.5) 50%, transparent 100%),
+      radial-gradient(1px 1px at 15% 80%, hsl(var(--neon-violet) / 0.4) 50%, transparent 100%),
       radial-gradient(1px 1px at 90% 85%, hsl(var(--primary) / 0.4) 50%, transparent 100%),
-      radial-gradient(1px 1px at 50% 50%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 65% 90%, hsl(var(--primary) / 0.5) 50%, transparent 100%),
-      radial-gradient(1px 1px at 30% 45%, hsl(var(--primary) / 0.2) 50%, transparent 100%),
-      radial-gradient(1px 1px at 80% 10%, hsl(var(--primary) / 0.3) 50%, transparent 100%);
+      radial-gradient(1px 1px at 50% 50%, hsl(var(--accent) / 0.3) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 65% 90%, hsl(var(--neon-violet) / 0.5) 50%, transparent 100%),
+      radial-gradient(1px 1px at 30% 45%, hsl(var(--neon-cyan) / 0.3) 50%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, hsl(var(--primary) / 0.4) 50%, transparent 100%);
     animation: starfield-drift 120s linear infinite;
   }
 
   .starfield::after {
     background-image: 
-      radial-gradient(1px 1px at 5% 25%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
+      radial-gradient(1px 1px at 5% 25%, hsl(var(--neon-violet) / 0.4) 50%, transparent 100%),
       radial-gradient(1.5px 1.5px at 20% 55%, hsl(var(--primary) / 0.4) 50%, transparent 100%),
-      radial-gradient(1px 1px at 35% 10%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
-      radial-gradient(1px 1px at 48% 75%, hsl(var(--primary) / 0.4) 50%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 62% 30%, hsl(var(--primary) / 0.5) 50%, transparent 100%),
+      radial-gradient(1px 1px at 35% 10%, hsl(var(--accent) / 0.3) 50%, transparent 100%),
+      radial-gradient(1px 1px at 48% 75%, hsl(var(--neon-cyan) / 0.4) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 62% 30%, hsl(var(--neon-violet) / 0.5) 50%, transparent 100%),
       radial-gradient(1px 1px at 78% 65%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
-      radial-gradient(1px 1px at 92% 50%, hsl(var(--primary) / 0.4) 50%, transparent 100%),
-      radial-gradient(1px 1px at 8% 90%, hsl(var(--primary) / 0.3) 50%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 42% 5%, hsl(var(--primary) / 0.5) 50%, transparent 100%),
+      radial-gradient(1px 1px at 92% 50%, hsl(var(--accent) / 0.4) 50%, transparent 100%),
+      radial-gradient(1px 1px at 8% 90%, hsl(var(--neon-cyan) / 0.3) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 42% 5%, hsl(var(--neon-violet) / 0.5) 50%, transparent 100%),
       radial-gradient(1px 1px at 73% 78%, hsl(var(--primary) / 0.3) 50%, transparent 100%);
     animation: starfield-drift 180s linear infinite reverse;
     opacity: 0.7;
@@ -157,8 +212,60 @@
     pointer-events: none;
     z-index: 0;
     background: 
-      radial-gradient(ellipse 600px 400px at 20% 20%, hsl(var(--primary) / 0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 500px at 80% 80%, hsl(var(--accent) / 0.05) 0%, transparent 70%),
-      radial-gradient(ellipse 400px 300px at 60% 10%, hsl(200 80% 50% / 0.04) 0%, transparent 70%);
+      radial-gradient(ellipse 600px 400px at 15% 15%, hsl(var(--neon-violet) / 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 500px at 85% 75%, hsl(var(--primary) / 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 50% 5%, hsl(var(--neon-blue) / 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 350px 350px at 70% 30%, hsl(var(--neon-cyan) / 0.04) 0%, transparent 70%);
+  }
+
+  /* Preloader */
+  .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: hsl(var(--background));
+  }
+
+  .preloader-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--neon-violet)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+  }
+
+  .progress-track {
+    width: 200px;
+    height: 3px;
+    background: hsl(var(--border));
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.5);
+  }
+
+  .progress-percent {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin-top: 1rem;
+    font-variant-numeric: tabular-nums;
   }
 }
