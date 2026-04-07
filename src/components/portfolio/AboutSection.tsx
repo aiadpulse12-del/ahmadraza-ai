@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeading from "./SectionHeading";
 import { Bot, Cpu, MessageSquare, Workflow, Plug, Database, Code2 } from "lucide-react";
+import profileImg from "@/assets/profile.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,9 +55,11 @@ const AboutSection = () => {
           >
             <div className="relative group cursor-pointer">
               <div className="w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/60 transition-colors duration-500 relative z-10">
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 via-card to-accent/20 flex items-center justify-center">
-                  <span className="text-6xl font-display font-bold text-gradient">AR</span>
-                </div>
+                <img
+                  src={profileImg}
+                  alt="Ahmad Raza"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div className="absolute inset-0 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition-all duration-500 scale-110" />
             </div>

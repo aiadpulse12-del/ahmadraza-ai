@@ -1,29 +1,31 @@
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeading from "./SectionHeading";
-import { MessageSquare, Target, Brain, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import projectWhatsapp from "@/assets/project-whatsapp.png";
+import projectLeadgen from "@/assets/project-leadgen.png";
+import projectRag from "@/assets/project-rag.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    icon: MessageSquare,
+    image: projectWhatsapp,
     title: "AI WhatsApp Customer Support System",
     description:
       "AI-powered WhatsApp automation for Shopify stores with real-time order tracking and product assistance.",
     tags: ["WhatsApp API", "Shopify", "AI", "n8n"],
   },
   {
-    icon: Target,
+    image: projectLeadgen,
     title: "AI Lead Generation System",
     description:
       "Automated Google Maps scraping + AI personalized email outreach system for client acquisition.",
     tags: ["Google Maps", "Email Outreach", "AI", "Automation"],
   },
   {
-    icon: Brain,
+    image: projectRag,
     title: "RAG-Based Appointment Booking Agent",
     description:
       "Intelligent system using Retrieval-Augmented Generation to automate scheduling with context-aware responses and real-time data retrieval.",
@@ -64,34 +66,41 @@ const ProjectsSection = () => {
           {projects.map((project) => (
             <div
               key={project.title}
-              className="project-card glass-card rounded-2xl p-8 group hover:border-primary/40 transition-all duration-300 relative overflow-hidden cursor-pointer hover:-translate-y-2"
+              className="project-card glass-card rounded-2xl overflow-hidden group hover:border-primary/40 transition-all duration-300 relative cursor-pointer hover:-translate-y-2"
             >
-              {/* Glow effect */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/15 transition-all duration-500" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "hsl(var(--neon-violet) / 0.1)" }} />
-
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-5">
-                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <project.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              {/* Project Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                <div className="absolute top-3 right-3 p-2 rounded-lg glass-card opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ExternalLink className="w-4 h-4 text-primary" />
                 </div>
-                <h3 className="font-display font-semibold text-lg mb-3 group-hover:text-primary/90 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary/80 border border-primary/10"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              </div>
+
+              {/* Content */}
+              <div className="p-6 relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/15 transition-all duration-500" />
+                <div className="relative z-10">
+                  <h3 className="font-display font-semibold text-lg mb-3 group-hover:text-primary/90 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary/80 border border-primary/10"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
