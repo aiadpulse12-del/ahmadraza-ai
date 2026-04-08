@@ -67,9 +67,12 @@ const ProjectsSection = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
         >
           {projects.map((project) => (
-            <div
+            <a
               key={project.title}
-              className="project-card glass-card rounded-2xl overflow-hidden group hover:border-primary/40 transition-all duration-300 relative cursor-pointer hover:-translate-y-2"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-card glass-card rounded-2xl overflow-hidden group hover:border-primary/40 transition-all duration-300 relative cursor-pointer hover:-translate-y-2 block"
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -106,7 +109,7 @@ const ProjectsSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
