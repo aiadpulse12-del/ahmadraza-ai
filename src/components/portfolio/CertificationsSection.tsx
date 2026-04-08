@@ -11,7 +11,8 @@ const CertificationsSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="glass-card rounded-xl p-8 max-w-2xl mx-auto hover:border-primary/30 transition-colors"
+        className="glass-card rounded-xl p-8 max-w-2xl mx-auto hover:border-primary/30 transition-colors cursor-pointer"
+        onClick={() => window.open("https://drive.google.com/file/d/1b1KiLTyJ3ZV3a10Q9DE9TYAqCBBcxXR3/view?usp=sharing", "_blank")}
       >
         <div className="flex items-start gap-4">
           <div className="p-3 rounded-lg bg-primary/10">
