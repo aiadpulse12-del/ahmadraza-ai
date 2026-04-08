@@ -32,7 +32,7 @@ const projects = [
     description:
       "Intelligent system using Retrieval-Augmented Generation to automate scheduling with context-aware responses and real-time data retrieval.",
     tags: ["RAG", "AI Agent", "LLM", "Automation"],
-    link: "https://drive.google.com/file/d/1lgDkAYNrjXqMAAUB3h4_u2MC2akUHqLq/view?usp=sharing",
+    link: "https://drive.google.com/file/d/15rsou7pHxpPVEHX9BNJIH07gfRpuKnwL/view?usp=sharing",
   },
 ];
 
