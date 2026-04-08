@@ -16,6 +16,7 @@ const projects = [
     description:
       "AI-powered WhatsApp automation for Shopify stores with real-time order tracking and product assistance.",
     tags: ["WhatsApp API", "Shopify", "AI", "n8n"],
+    link: "https://drive.google.com/file/d/1GpZh4ZnmNk4axQHJ5Tcjz9Igu68o8efJ/view?usp=sharing",
   },
   {
     image: projectLeadgen,
@@ -23,6 +24,7 @@ const projects = [
     description:
       "Automated Google Maps scraping + AI personalized email outreach system for client acquisition.",
     tags: ["Google Maps", "Email Outreach", "AI", "Automation"],
+    link: "https://docs.google.com/document/d/1nRCG3M0ntAD3rOtr2e0b1hCuXsLoE4xe/edit?usp=sharing&ouid=115793955902701151489&rtpof=true&sd=true",
   },
   {
     image: projectRag,
@@ -30,6 +32,7 @@ const projects = [
     description:
       "Intelligent system using Retrieval-Augmented Generation to automate scheduling with context-aware responses and real-time data retrieval.",
     tags: ["RAG", "AI Agent", "LLM", "Automation"],
+    link: "https://drive.google.com/file/d/1lgDkAYNrjXqMAAUB3h4_u2MC2akUHqLq/view?usp=sharing",
   },
 ];
 
@@ -64,9 +67,12 @@ const ProjectsSection = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
         >
           {projects.map((project) => (
-            <div
+            <a
               key={project.title}
-              className="project-card glass-card rounded-2xl overflow-hidden group hover:border-primary/40 transition-all duration-300 relative cursor-pointer hover:-translate-y-2"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-card glass-card rounded-2xl overflow-hidden group hover:border-primary/40 transition-all duration-300 relative cursor-pointer hover:-translate-y-2 block"
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -103,7 +109,7 @@ const ProjectsSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
