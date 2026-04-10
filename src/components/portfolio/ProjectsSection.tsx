@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import projectWhatsapp from "@/assets/project-whatsapp.png";
 import projectLeadgen from "@/assets/project-leadgen.png";
 import projectRag from "@/assets/project-rag.png";
+import projectStock from "@/assets/project-stock.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,14 @@ const projects = [
       "Intelligent system using Retrieval-Augmented Generation to automate scheduling with context-aware responses and real-time data retrieval.",
     tags: ["RAG", "AI Agent", "LLM", "Automation"],
     link: "https://drive.google.com/file/d/15rsou7pHxpPVEHX9BNJIH07gfRpuKnwL/view?usp=sharing",
+  },
+  {
+    image: projectStock,
+    title: "AI Stock Analysis Agent",
+    description:
+      "Real-time market intelligence agent with technical analysis, news sentiment tracking, and AI-powered insights for smarter investment decisions.",
+    tags: ["n8n", "OpenAI", "Tavily", "Stock API"],
+    link: "https://drive.google.com/file/d/1w-4a6900a6QseuZiYQ1D29xCLyqzngFc/view?usp=sharing",
   },
 ];
 
@@ -64,7 +73,7 @@ const ProjectsSection = () => {
         <SectionHeading label="Work" title="Featured Projects" />
         <div
           ref={cardsRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
         >
           {projects.map((project) => (
             <a
