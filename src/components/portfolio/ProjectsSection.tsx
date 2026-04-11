@@ -15,7 +15,7 @@ const projects = [
     image: projectWhatsapp,
     title: "AI WhatsApp Customer Support System",
     description:
-      "AI-powered WhatsApp automation for Shopify stores with real-time order tracking and product assistance.",
+      "AI-powered WhatsApp agent for Shopify stores handling order tracking, product questions, and customer support in real-time — fully automated using LLM agents.",
     tags: ["WhatsApp API", "Shopify", "AI", "n8n"],
     link: "https://drive.google.com/file/d/1GpZh4ZnmNk4axQHJ5Tcjz9Igu68o8efJ/view?usp=sharing",
   },
@@ -23,7 +23,7 @@ const projects = [
     image: projectLeadgen,
     title: "AI Lead Generation System",
     description:
-      "Automated Google Maps scraping + AI personalized email outreach system for client acquisition.",
+      "Fully autonomous outreach agent — finds leads via Google Maps, visits each website, writes AI-personalized cold emails, sends via Gmail, and tracks every reply in Google Sheets. Zero manual work.",
     tags: ["Google Maps", "Email Outreach", "AI", "Automation"],
     link: "https://docs.google.com/document/d/1nRCG3M0ntAD3rOtr2e0b1hCuXsLoE4xe/edit?usp=sharing&ouid=115793955902701151489&rtpof=true&sd=true",
   },
@@ -31,7 +31,7 @@ const projects = [
     image: projectRag,
     title: "RAG-Based Appointment Booking Agent",
     description:
-      "Intelligent system using Retrieval-Augmented Generation to automate scheduling with context-aware responses and real-time data retrieval.",
+      "Intelligent booking agent that answers questions from your own knowledge base, qualifies leads in real-time, and automatically schedules appointments — 24/7 without human involvement.",
     tags: ["RAG", "AI Agent", "LLM", "Automation"],
     link: "https://drive.google.com/file/d/15rsou7pHxpPVEHX9BNJIH07gfRpuKnwL/view?usp=sharing",
   },
@@ -39,7 +39,7 @@ const projects = [
     image: projectStock,
     title: "AI Stock Analysis Agent",
     description:
-      "Real-time market intelligence agent with technical analysis, news sentiment tracking, and AI-powered insights for smarter investment decisions.",
+      "Multi-tool AI agent combining real-time market data, technical chart analysis, and live news sentiment to deliver professional-grade stock intelligence on demand.",
     tags: ["n8n", "OpenAI", "Tavily", "Stock API"],
     link: "https://drive.google.com/file/d/1w-4a6900a6QseuZiYQ1D29xCLyqzngFc/view?usp=sharing",
   },
