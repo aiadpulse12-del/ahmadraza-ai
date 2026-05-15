@@ -16,7 +16,17 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [cooldown, setCooldown] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const lastSentRef = useRef<number>(0);
+
+  const LIMITS = { name: 100, email: 255, message: 2000 } as const;
+
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const t = setInterval(() => setCooldown((c) => (c > 0 ? c - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, [cooldown]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
