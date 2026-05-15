@@ -68,8 +68,9 @@ const ContactSection = () => {
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
             <div className="contact-animate">
-              <label className="text-sm text-muted-foreground mb-1.5 block">Name</label>
+              <label htmlFor="contact-name" className="text-sm text-muted-foreground mb-1.5 block">Name</label>
               <input
+                id="contact-name"
                 type="text"
                 required
                 value={form.name}
@@ -79,8 +80,9 @@ const ContactSection = () => {
               />
             </div>
             <div className="contact-animate">
-              <label className="text-sm text-muted-foreground mb-1.5 block">Email</label>
+              <label htmlFor="contact-email" className="text-sm text-muted-foreground mb-1.5 block">Email</label>
               <input
+                id="contact-email"
                 type="email"
                 required
                 value={form.email}
@@ -90,8 +92,9 @@ const ContactSection = () => {
               />
             </div>
             <div className="contact-animate">
-              <label className="text-sm text-muted-foreground mb-1.5 block">Message</label>
+              <label htmlFor="contact-message" className="text-sm text-muted-foreground mb-1.5 block">Message</label>
               <textarea
+                id="contact-message"
                 required
                 rows={4}
                 value={form.message}

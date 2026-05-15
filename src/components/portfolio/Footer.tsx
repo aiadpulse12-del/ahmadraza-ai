@@ -42,6 +42,7 @@ const Footer = () => {
             href="https://wa.me/message/SOADFTQYKH4NE1"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="WhatsApp"
             className="text-muted-foreground hover:text-primary transition-colors hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]"
           >
             <MessageCircle className="w-4 h-4" />
@@ -50,6 +51,7 @@ const Footer = () => {
             href="https://www.instagram.com/aiadpulse?igsh=eXQ0MXM0dW9qZTJn"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Instagram"
             className="text-muted-foreground hover:text-primary transition-colors hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
