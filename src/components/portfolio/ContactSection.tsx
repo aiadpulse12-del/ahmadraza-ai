@@ -16,7 +16,17 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [cooldown, setCooldown] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const lastSentRef = useRef<number>(0);
+
+  const LIMITS = { name: 100, email: 255, message: 2000 } as const;
+
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const t = setInterval(() => setCooldown((c) => (c > 0 ? c - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, [cooldown]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -39,16 +49,42 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSending(true);
     setError("");
+
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
+
+    if (!name || !email || !message) {
+      setError("Please fill in all fields.");
+      return;
+    }
+    if (name.length > LIMITS.name || email.length > LIMITS.email || message.length > LIMITS.message) {
+      setError("One of the fields exceeds the maximum length.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    const now = Date.now();
+    if (now - lastSentRef.current < 30_000) {
+      const wait = Math.ceil((30_000 - (now - lastSentRef.current)) / 1000);
+      setError(`Please wait ${wait}s before sending another message.`);
+      return;
+    }
+
+    setSending(true);
     try {
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-        from_name: form.name,
-        from_email: form.email,
-        message: form.message,
+        from_name: name,
+        from_email: email,
+        message,
       }, PUBLIC_KEY);
       setSent(true);
       setForm({ name: "", email: "", message: "" });
+      lastSentRef.current = Date.now();
+      setCooldown(30);
       setTimeout(() => setSent(false), 4000);
     } catch {
       setError("Failed to send. Please try again or use WhatsApp.");
@@ -73,6 +109,7 @@ const ContactSection = () => {
                 id="contact-name"
                 type="text"
                 required
+                maxLength={LIMITS.name}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg glass-input text-foreground text-sm focus:outline-none"
@@ -85,6 +122,7 @@ const ContactSection = () => {
                 id="contact-email"
                 type="email"
                 required
+                maxLength={LIMITS.email}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg glass-input text-foreground text-sm focus:outline-none"
@@ -96,6 +134,7 @@ const ContactSection = () => {
               <textarea
                 id="contact-message"
                 required
+                maxLength={LIMITS.message}
                 rows={4}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -111,11 +150,11 @@ const ContactSection = () => {
             )}
             <button
               type="submit"
-              disabled={sending}
+              disabled={sending || cooldown > 0}
               className="contact-animate w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium glow-button disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              {sending ? "Sending..." : "Send Message"}
+              {sending ? "Sending..." : cooldown > 0 ? `Wait ${cooldown}s` : "Send Message"}
             </button>
           </form>
 
