@@ -66,6 +66,9 @@ const HeroSection = () => {
         >
           Hi, I'm{" "}
           <span className="text-gradient">M.Ahmad</span>
+          <span className="block text-2xl sm:text-3xl lg:text-4xl mt-4 text-foreground/80">
+            AI Agents & Chatbot Developer
+          </span>
         </motion.h1>
 
         <motion.p

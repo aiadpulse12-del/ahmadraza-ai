@@ -1,0 +1,15 @@
+# M.Ahmad Raza — Agentic AI Developer
+
+> Portfolio of M.Ahmad Raza, an Agentic AI Developer building intelligent AI agents, chatbots, and workflow automation systems for businesses.
+
+## Pages
+
+- [Home](/): About, skills, featured projects, certifications, experience, tools, and contact.
+
+## Sections
+
+- [About](/#about): Background and approach to building agentic AI.
+- [Skills](/#skills): Core skills across LLMs, agents, and automation.
+- [Projects](/#projects): Featured AI agent and automation projects.
+- [Experience](/#experience): Work and project experience.
+- [Contact](/#contact): Get in touch via WhatsApp, Instagram, or email.
