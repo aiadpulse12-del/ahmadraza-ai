@@ -150,11 +150,11 @@ const ContactSection = () => {
             )}
             <button
               type="submit"
-              disabled={sending}
+              disabled={sending || cooldown > 0}
               className="contact-animate w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium glow-button disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              {sending ? "Sending..." : "Send Message"}
+              {sending ? "Sending..." : cooldown > 0 ? `Wait ${cooldown}s` : "Send Message"}
             </button>
           </form>
 
