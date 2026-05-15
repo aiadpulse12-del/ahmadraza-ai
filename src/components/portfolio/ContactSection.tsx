@@ -49,16 +49,42 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSending(true);
     setError("");
+
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
+
+    if (!name || !email || !message) {
+      setError("Please fill in all fields.");
+      return;
+    }
+    if (name.length > LIMITS.name || email.length > LIMITS.email || message.length > LIMITS.message) {
+      setError("One of the fields exceeds the maximum length.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    const now = Date.now();
+    if (now - lastSentRef.current < 30_000) {
+      const wait = Math.ceil((30_000 - (now - lastSentRef.current)) / 1000);
+      setError(`Please wait ${wait}s before sending another message.`);
+      return;
+    }
+
+    setSending(true);
     try {
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-        from_name: form.name,
-        from_email: form.email,
-        message: form.message,
+        from_name: name,
+        from_email: email,
+        message,
       }, PUBLIC_KEY);
       setSent(true);
       setForm({ name: "", email: "", message: "" });
+      lastSentRef.current = Date.now();
+      setCooldown(30);
       setTimeout(() => setSent(false), 4000);
     } catch {
       setError("Failed to send. Please try again or use WhatsApp.");
