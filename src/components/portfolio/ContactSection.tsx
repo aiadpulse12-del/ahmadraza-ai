@@ -134,6 +134,7 @@ const ContactSection = () => {
               <textarea
                 id="contact-message"
                 required
+                maxLength={LIMITS.message}
                 rows={4}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
