@@ -122,6 +122,7 @@ const ContactSection = () => {
                 id="contact-email"
                 type="email"
                 required
+                maxLength={LIMITS.email}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg glass-input text-foreground text-sm focus:outline-none"
