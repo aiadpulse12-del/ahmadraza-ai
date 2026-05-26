@@ -58,7 +58,8 @@ const AboutSection = () => {
                 <img
                   src={profileImg}
                   alt="Ahmad Raza"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  style={{ objectPosition: "50% 18%" }}
                 />
               </div>
               <div className="absolute inset-0 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition-all duration-500 scale-110" />
