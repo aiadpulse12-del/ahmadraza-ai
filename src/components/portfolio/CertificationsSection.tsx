@@ -29,7 +29,7 @@ const CertificationsSection = () => (
             </p>
           </div>
         </div>
-      </motion.div>
+      </motion.a>
     </div>
   </section>
 );
